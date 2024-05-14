@@ -1,0 +1,77 @@
+{
+  "eventTypes": [
+    {
+      "type": "PurchaseCompleted",
+      "fields": {
+        "eventType": {
+          "type": "string",
+          "valueType": "constant",
+          "constant": "PurchaseCompleted"
+        },
+        "timestamp": {
+          "type": "string",
+          "valueType": "format",
+          "format": "date-time"
+        },
+        "userId": {
+          "type": "string",
+          "valueType": "pattern",
+          "pattern": "user[0-9]+"
+        },
+        "transactionId": {
+          "type": "string",
+          "valueType": "pattern",
+          "pattern": "trans[0-9]+"
+        },
+        "products": {
+          "type": "array",
+          "items": {
+            "productId": {
+              "type": "string",
+              "valueType": "pattern",
+              "pattern": "prod[0-9]+"
+            },
+            "quantity": {
+              "type": "integer",
+              "valueType": "range",
+              "minimum": 1,
+              "maximum": 100
+            },
+            "description": {
+              "type": "string",
+              "valueType": "examples",
+              "enum": ["Smart Light Switch", "Smart Thermostat"]
+            },
+            "category": {
+              "type": "string",
+              "valueType": "enum",
+              "enum": ["Smart Home", "Electronics", "Furniture"]
+            },
+            "price": {
+              "type": "integer",
+              "valueType": "range",
+              "minimum": 1000,
+              "maximum": 100000
+            }
+          }
+        },
+        "eventId": {
+          "type": "string",
+          "valueType": "format",
+          "format": "uuid"
+        }
+      }
+    }
+  ],
+  "generationSettings": {
+    "numberOfEvents": 100,
+    "sleepTimeMs": 1000,
+    "duplicatePercentage": 5,
+    "missingFieldsPercentage": 10,
+    "incorrectTypesPercentage": 2
+  },
+  "kafkaSettings": {
+    "bootstrapServers": "localhost:9092",
+    "topic": "events"
+  }
+}
