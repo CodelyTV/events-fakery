@@ -41,7 +41,7 @@ You can also run the application using Docker, which does not require `sbt` to b
 - Ensure Kafka and Zookeeper are running. You can use Docker to start them up:
 
 ```sh
-docker-compose up -d
+docker compose up -d
 ```
 
 ### Running the Application with Docker
@@ -182,7 +182,7 @@ The JSON configuration file must follow this structure:
 1. **Ensure Kafka and Zookeeper are running**: You can use Docker to start them up.
 
 ```sh
-docker-compose up -d
+docker compose up -d
 ```
 
 2. **Run the Event Producer**: Execute the `EventProducer` application by providing the path to your JSON configuration file.
